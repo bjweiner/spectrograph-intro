@@ -16,6 +16,19 @@
 
 \long\def\hidetext#1{\relax}
 
+% Macros for variable subscripts, because we want to typeset them just so.
+\newcommand{\subscript}[1]{\mathrm{#1}}
+\newcommand{\field}{\subscript{field}}
+\newcommand{\offaxis}{\subscript{offaxis}}
+\newcommand{\tel}{\subscript{tel}}
+\newcommand{\pupil}{\subscript{pupil}}
+\newcommand{\coll}{\subscript{coll}}
+\newcommand{\ccd}{\subscript{ccd}}
+\newcommand{\cam}{\subscript{cam}}
+\newcommand{\grating}{\subscript{grating}}
+\newcommand{\order}{\subscript{order}}
+
+
 \begin{document}
 
 {\bf\Large Scaling relations for telescopes, spectrographs, \\
@@ -102,7 +115,7 @@ $f =$ focal length, mm \\
 $N =$ f/number: ratio of focal length to aperture or beam diameter \\
 $D =$ physical diameters, mm \\
 $s =$ scale at a focal plane, arcsec/mm \\
-$\theta_{\mathrm{field}} =$ angular field of view 
+$\theta_{\field} =$ angular field of view 
 
 To simplify the optical analysis, I will consider optical
 elements that are focused at infinity.
@@ -114,7 +127,7 @@ beams.  In the case of collimated beams, a mirror or lens turns the off-axis
 angle $\theta$ of an incident beam into an off-axis displacement $r$
 of the image in the focal plane,
 and the amount of the displacement is governed by the 
-lens focal length $f$: $r_{\mathrm{offaxis}} = \theta_{\mathrm{offaxis}} f$, where
+lens focal length $f$: $r_{\offaxis} = \theta_{\offaxis} f$, where
 $\theta$ is in radians.
 
 \begin{figure}[ht]
@@ -157,12 +170,12 @@ is simply the ratio of height of the cone to the base.
 
 The plate scale at the secondary focal plane of a telescope and
 the physical diameter of the field of view depend on the
-focal length of the telescope $f_{\mathrm{tel}}$
+focal length of the telescope $f_{\tel}$
 (the factor 206265'' converts from radians to arcseconds):
  
-$$ s_{\mathrm{tel}} = 206265" / f_{\mathrm{tel}}, $$
-$$ f_{\mathrm{tel}} = D_{\mathrm{tel}} N_{\mathrm{tel}}, $$
-$$ D_{\mathrm{field}} = \theta_{\mathrm{field}} / s_{\mathrm{tel}}. $$
+$$ s_{\tel} = 206265" / f_{\tel}, $$
+$$ f_{\tel} = D_{\tel} N_{\tel}, $$
+$$ D_{\field} = \theta_{\field} / s_{\tel}. $$
 
 The scale at the secondary focal plane is usually large 
 enough that it is not a good match for modern detectors.
@@ -208,7 +221,7 @@ Diverging beams emerge from each point on the focal surface
 and are re-collimated; the diameter of a collimated beam is
 the pupil diameter,
 
-$$ D_{\mathrm{pupil}} = f_{\mathrm{coll}} / N_{\mathrm{tel}}.$$
+$$ D_{\pupil} = f_{\coll} / N_{\tel}.$$
 
 The pupil is the aperture of the system, here the primary mirror.
 The collimator forms an image of the mirror at the pupil location
@@ -237,16 +250,16 @@ pass through a ``waist'' at the pupil.
 
 In order to image a nonzero field of view, the collimator
 has to accept off-axis beams, and be physically wider than
-$D_{\mathrm{pupil}}$.  Figure \ref{fig-offaxis} shows the path of off-axis
+$D_{\pupil}$.  Figure \ref{fig-offaxis} shows the path of off-axis
 beams through the optical system.
 For the simplified case in which 
 the off-axis beams are parallel to the optical
 axis (``telecentric'') and we have abstracted the collimator
 as a simple lens, then
 
-$$ D_{\mathrm{coll}} = D_{\mathrm{pupil}} + D_{\mathrm{field}}. $$
+$$ D_{\coll} = D_{\pupil} + D_{\field}. $$
 
-[Side note: For a complex lens, the $D_{\mathrm{coll}}$ isn't necessarily the diameter 
+[Side note: For a complex lens, the $D_{\coll}$ isn't necessarily the diameter 
 of all of the collimator glass, but the diameter of the 
 collimator entrance pupil.  The entrance pupil of a lens by itself
 is not the same thing as the pupil of the whole system,
@@ -256,11 +269,11 @@ stop is the primary mirror.]
 
 Note that the collimator must have total f-number
 
-$$ N_{\mathrm{coll}} = f_{\mathrm{coll}} / D_{\mathrm{coll}}, $$
+$$ N_{\coll} = f_{\coll} / D_{\coll}, $$
 
-$$ N_{\mathrm{coll}} = N_{\mathrm{tel}} \frac{D_{\mathrm{pupil}}}{D_{\mathrm{coll}}}, $$
+$$ N_{\coll} = N_{\tel} \frac{D_{\pupil}}{D_{\coll}}, $$
 
-$$ N_{\mathrm{coll}} = N_{\mathrm{tel}} \frac{D_{\mathrm{pupil}}}{D_{\mathrm{pupil}}+D_{\mathrm{field}}}. $$
+$$ N_{\coll} = N_{\tel} \frac{D_{\pupil}}{D_{\pupil}+D_{\field}}. $$
 
 The whole collimator lens is faster than the beam delivered 
 by the telescope, because it has to be wide enough to accept 
@@ -276,22 +289,22 @@ instrument.
 
 The pupil of the spectrograph is an image of the primary
 mirror formed by the secondary and the collimator.
-The pupil diameter $D_{\mathrm{pupil}}$ is simply set by the expansion
+The pupil diameter $D_{\pupil}$ is simply set by the expansion
 of the beam as it reaches the collimator, as shown in 
 Figure \ref{fig-reimager}, and its location is set by 
 the focal length of the collimator.
 
-$$ D_{\mathrm{pupil}} = f_{\mathrm{coll}} / N_{\mathrm{tel}} = \frac{D_{\mathrm{tel}} f_{\mathrm{coll}}}{f_{\mathrm{tel}}} $$
+$$ D_{\pupil} = f_{\coll} / N_{\tel} = \frac{D_{\tel} f_{\coll}}{f_{\tel}} $$
 
-$D_{\mathrm{pupil}}$ gives the minimum size of a dispersing element in the
+$D_{\pupil}$ gives the minimum size of a dispersing element in the
 collimated beam.  This is a critical number since it sets the
 minimum size of a grating, grism, or other optical device that the
 instrument requires.
 
 Off-axis beams, which are displaced by 
-$D_{\mathrm{field}}/2$ in the focal plane, pass through the pupil at an angle
+$D_{\field}/2$ in the focal plane, pass through the pupil at an angle
 
-$$ \theta_{\mathrm{offaxis}} = \frac{D_{\mathrm{field}}}{2f_{\mathrm{coll}}}. $$
+$$ \theta_{\offaxis} = \frac{D_{\field}}{2f_{\coll}}. $$
 
 All the light from on- and off-axis beams passes 
 through a ``waist'' at the pupil.  If we introduced a 
@@ -301,15 +314,15 @@ were placed ahead of or behind the pupil, the image of the primary
 would be not clearly focused.  
 
 The pupil size interacts with the field of view indirectly.
-Once the collimator focal length $f_{\mathrm{coll}}$ is chosen, increasing the 
+Once the collimator focal length $f_{\coll}$ is chosen, increasing the 
 field of view does not increase the pupil size, since all
 the off-axis beams pass through the ``waist'' of the pupil.
 However, if we choose a
-long $f_{\mathrm{coll}}$, then off-axis light enters the collimator at
+long $f_{\coll}$, then off-axis light enters the collimator at
 a less extreme angle, so the collimator lens is slower and
-easier to design.  But long $f_{\mathrm{coll}}$ requires a larger
-pupil.  Equivalently, from the equations from $N_{\mathrm{coll}}$ above,
-we see that increasing $D_{\mathrm{pupil}}$ relative to $D_{\mathrm{field}}$ makes
+easier to design.  But long $f_{\coll}$ requires a larger
+pupil.  Equivalently, from the equations from $N_{\coll}$ above,
+we see that increasing $D_{\pupil}$ relative to $D_{\field}$ makes
 the collimator slower.  So although field of view does not
 depend directly on pupil size, in real optical designs
 it is difficult to
@@ -320,30 +333,30 @@ image a large field through a small pupil.
 The camera reimages the collimated beams onto the detector/CCD.
 The camera has to accept the collimated beam so it has
 
-$$ D_{\mathrm{cam}} = D_{\mathrm{pupil}}. $$
+$$ D_{\cam} = D_{\pupil}. $$
 
-In practice, $D_{\mathrm{cam}}$ should be slightly greater to avoid 
+In practice, $D_{\cam}$ should be slightly greater to avoid 
 vignetting off-axis beams.  (This diameter is really the size of the
 camera's entrance pupil, not the physical size of a lens.)  
 Thus the f-number of the camera is 
 
-$$ N_{\mathrm{cam}} = f_{\mathrm{cam}} / D_{\mathrm{pupil}} = \frac{N_{\mathrm{tel}} f_{\mathrm{cam}}}{f_{\mathrm{coll}}}. $$
+$$ N_{\cam} = f_{\cam} / D_{\pupil} = \frac{N_{\tel} f_{\cam}}{f_{\coll}}. $$
 
 Because the camera focal length is usually fairly short to
 get demagnification of the focal plane onto a small detector,
-the camera typically has to be fast (small $N_{\mathrm{cam}}$).  As drawn in Figure
+the camera typically has to be fast (small $N_{\cam}$).  As drawn in Figure
 \ref{fig-offaxis}, the beam converges with a wider (faster) angle
 at the detector, compared to the beam delivered by the telescope.
 
 An off-axis beam is reimaged at distance from the detector center of 
 
-$$ D_{\mathrm{ccd}}/2 = \theta_{\mathrm{offaxis}} f_{\mathrm{cam}}. $$
+$$ D_{\ccd}/2 = \theta_{\offaxis} f_{\cam}. $$
 
 So this means that
 
-$$ D_{\mathrm{ccd}} = D_{\mathrm{field}} \frac{f_{\mathrm{cam}}}{f_{\mathrm{coll}}}, $$
-$$ s_{\mathrm{ccd}} = s_{\mathrm{tel}} \frac{f_{\mathrm{coll}}}{f_{\mathrm{cam}}}, $$ 
-$$ s_{\mathrm{ccd}} = \frac{206265"}{f_{\mathrm{tel}}} \frac{f_{\mathrm{coll}}}{f_{\mathrm{cam}}}. $$ 
+$$ D_{\ccd} = D_{\field} \frac{f_{\cam}}{f_{\coll}}, $$
+$$ s_{\ccd} = s_{\tel} \frac{f_{\coll}}{f_{\cam}}, $$ 
+$$ s_{\ccd} = \frac{206265"}{f_{\tel}} \frac{f_{\coll}}{f_{\cam}}. $$ 
 
 The focal plane and plate scale have been demagnified by the 
 ratio of collimator to camera focal lengths.  If the collimator
@@ -359,7 +372,7 @@ make the pixel scale a better match to the typical seeing.
 
 Now consider putting a grating or grism in the collimated
 beam to do spectroscopy.  The important choice for spectroscopy
-is the lines/mm of the grating, call this $M_{\mathrm{grating}}$, which 
+is the lines/mm of the grating, call this $M_{\grating}$, which 
 governs the spectral resolution.  Typical numbers 
 for large astronomical gratings range from 100-1200 lines/mm
 (apart from echelle gratings, which are used at a different 
@@ -385,16 +398,16 @@ and the lines/mm of the grating.
 A transmission grating deviates light of wavelength $\lambda$
 by an angle $\alpha$,
 
-$$ {\rm sin}~\alpha = k_{\mathrm{order}} \lambda / l_{\mathrm{grating}}, $$
-where $l_{\mathrm{grating}}$ = interline spacing, and $k_{\mathrm{order}}$ is an
+$$ {\rm sin}~\alpha = k_{\order} \lambda / l_{\grating}, $$
+where $l_{\grating}$ = interline spacing, and $k_{\order}$ is an
 integer $\geq 1$.  Equivalently,
 
-$$ {\rm sin}~\alpha = k_{\mathrm{order}} \lambda M_{\mathrm{grating}}. $$
+$$ {\rm sin}~\alpha = k_{\order} \lambda M_{\grating}. $$
 
-Let's work in first order where $k_{\mathrm{order}} = 1$.
+Let's work in first order where $k_{\order} = 1$.
 For a reflection grating the grating equation is 
 
-$$ {\rm sin}~\alpha + {\rm sin}~\beta = k_{\mathrm{order}} \lambda M_{\mathrm{grating}} $$
+$$ {\rm sin}~\alpha + {\rm sin}~\beta = k_{\order} \lambda M_{\grating} $$
 
 where $\alpha$ and $\beta$ are the angles of incident and diffracted rays
 with respect to the grating normal, shown in Figure
@@ -421,26 +434,26 @@ we have tilted the grating so as to get light into the camera,
 but with the change in $\beta$ per wavelength and the resulting
 wavelength scale per pixel.
 Consider how the camera translates a deviation in angle of the
-diffracted beam to a distance on the detector, $r_{\mathrm{ccd}}$.  
+diffracted beam to a distance on the detector, $r_{\ccd}$.  
 For a small deviation in angle, $d\beta$, the image moves
 
-$$  dr_{\mathrm{ccd}} = f_{\mathrm{cam}}~ d\beta. $$
+$$  dr_{\ccd} = f_{\cam}~ d\beta. $$
 
 By differentiating the grating equation, for a fixed 
 input angle $\alpha$, 
 
-%$$ \frac{d\beta}{d\lambda}|_\alpha = \frac{M_{\mathrm{grating}}}{{\rm cos}~\beta}.$$
-$$ {\rm cos}~\beta~d\beta = M_{\mathrm{grating}}~d\lambda.$$
+%$$ \frac{d\beta}{d\lambda}|_\alpha = \frac{M_{\grating}}{{\rm cos}~\beta}.$$
+$$ {\rm cos}~\beta~d\beta = M_{\grating}~d\lambda.$$
 
 For typical spectrograph layouts (other than echelles), $\beta$
 is not large and ${\rm cos}\ \beta$ is slightly $<1$.
 
-%$$  dr_{\mathrm{ccd}} = \frac{f_{\mathrm{cam}}}{l_{\mathrm{grating}} {\rm cos}~\beta} d\lambda, $$
-%$$  dr_{\mathrm{ccd}} = \frac{f_{\mathrm{cam}} M_{\mathrm{grating}}}{{\rm cos}~\beta} d\lambda. $$
+%$$  dr_{\ccd} = \frac{f_{\cam}}{l_{\grating} {\rm cos}~\beta} d\lambda, $$
+%$$  dr_{\ccd} = \frac{f_{\cam} M_{\grating}}{{\rm cos}~\beta} d\lambda. $$
 
 This gives the wavelength/physical scale at the CCD:
 
-$$  \frac{d\lambda}{dr_{\mathrm{ccd}}} = \frac{{\rm cos}~\beta}{f_{\mathrm{cam}}  M_{\mathrm{grating}}}. $$
+$$  \frac{d\lambda}{dr_{\ccd}} = \frac{{\rm cos}~\beta}{f_{\cam}  M_{\grating}}. $$
 
 
 \subsection{Spectrograph resolution}
@@ -487,23 +500,23 @@ For some slit width $dW$ in arcsec, if the anamorphic factor
 $d\alpha/d\beta \sim 1$, $dW$ corresponds to a certain number 
 of detector pixels as calculated earlier.
 
-$$ dr_{\mathrm{ccd}} {\rm (in\ mm)} = dW / s_{\mathrm{ccd}} , $$
-$$ dr_{\mathrm{ccd}} = \frac{dW}{206265"} f_{\mathrm{tel}} \frac{f_{\mathrm{cam}}}{f_{\mathrm{coll}}}, $$
+$$ dr_{\ccd} {\rm (in\ mm)} = dW / s_{\ccd} , $$
+$$ dr_{\ccd} = \frac{dW}{206265"} f_{\tel} \frac{f_{\cam}}{f_{\coll}}, $$
 
 and we had that
-$$ d\lambda = \frac{dr_{\mathrm{ccd}}~{\rm cos}~\beta}{f_{\mathrm{cam}} M_{\mathrm{grating}}}. $$
+$$ d\lambda = \frac{dr_{\ccd}~{\rm cos}~\beta}{f_{\cam} M_{\grating}}. $$
 
 Therefore the delta-wavelength $d\lambda$ for a slit width $dW$
 in arcsec is given by
 
-%$$  d\lambda = \frac{dW}{206265"} f_{\mathrm{tel}} \frac{f_{\mathrm{cam}}}{f_{\mathrm{coll}}} \frac{{\rm cos}~\beta}{f_{\mathrm{cam}}  M_{\mathrm{grating}}}, $$
+%$$  d\lambda = \frac{dW}{206265"} f_{\tel} \frac{f_{\cam}}{f_{\coll}} \frac{{\rm cos}~\beta}{f_{\cam}  M_{\grating}}, $$
 %
 %simplifying to
 
-$$  d\lambda = \frac{dW}{206265"} \frac{f_{\mathrm{tel}}}{f_{\mathrm{coll}}}\frac{{\rm cos}~\beta}{M_{\mathrm{grating}}}. $$
+$$  d\lambda = \frac{dW}{206265"} \frac{f_{\tel}}{f_{\coll}}\frac{{\rm cos}~\beta}{M_{\grating}}. $$
 
 Note that the camera focal length has dropped out here and
-that $f_{\mathrm{coll}}$ is in the denominator, meaning longer collimators
+that $f_{\coll}$ is in the denominator, meaning longer collimators
 give higher resolution for a given slit width.  This is 
 because the longer collimator translates a given slit width
 into a smaller spread of angles, hence a smaller spread of
@@ -511,21 +524,21 @@ wavelength by the grating.
 
 \subsection{Spectral resolution is controlled by pupil size}
 
-Since $f_{\mathrm{tel}} = D_{\mathrm{tel}} N_{\mathrm{tel}}$, and $f_{\mathrm{coll}} = D_{\mathrm{pupil}}  N_{\mathrm{tel}}$,
+Since $f_{\tel} = D_{\tel} N_{\tel}$, and $f_{\coll} = D_{\pupil}  N_{\tel}$,
 we can rewrite the equation for resolution as a function of 
 slit width as
 
-$$ d\lambda = \frac{dW}{206265"}  \frac{D_{\mathrm{tel}}}{D_{\mathrm{pupil}}} \frac{{\rm cos}~\beta}{M_{\mathrm{grating}}}. $$
+$$ d\lambda = \frac{dW}{206265"}  \frac{D_{\tel}}{D_{\pupil}} \frac{{\rm cos}~\beta}{M_{\grating}}. $$
 
 Many factors have dropped out, leaving only telescope and
 pupil diameters and the lines/mm of the grating (and ${\rm cos}~\beta$,
 which is not very adjustable).
 This equation expresses a fundamental relation between telescopes
 and instruments.
-Everybody wants a bigger aperture telescope, large $D_{\mathrm{tel}}$, to
+Everybody wants a bigger aperture telescope, large $D_{\tel}$, to
 gather more light.  But in order to get equally
-high resolution spectra, if we increase $D_{\mathrm{tel}}$,
-we must also increase $D_{\mathrm{pupil}}$.  ($M_{\mathrm{grating}}$ is limited, since a 
+high resolution spectra, if we increase $D_{\tel}$,
+we must also increase $D_{\pupil}$.  ($M_{\grating}$ is limited, since a 
 1200 lines/mm grating already has interline spacing $<1$ micron,
 close to the wavelengths of the light we are trying to diffract;
 we can't make a high-quality large grating that is significantly finer.)
@@ -534,20 +547,20 @@ Again, this is because increasing the telescope size
 means we have to scale up the instrument, otherwise a given
 slit passes a larger range of angles to the grating, and that
 lowers the resolution.  If we tried to get around this by
-making a faster telescope (smaller $N_{\mathrm{tel}}$) with a smaller physical 
-scale $s_{\mathrm{tel}}$ at the focal plane, the beam emerging from the focal 
+making a faster telescope (smaller $N_{\tel}$) with a smaller physical 
+scale $s_{\tel}$ at the focal plane, the beam emerging from the focal 
 plane and entering the collimator is faster, so it will make a
 big pupil anyway.
 
-Note that for given $D_{\mathrm{tel}}$,
-$d\lambda \propto \frac{1}{D_{\mathrm{pupil}} M_{\mathrm{grating}}}$.  
-$D_{\mathrm{pupil}} M_{\mathrm{grating}}$ is the total number of lines in the grating,
+Note that for given $D_{\tel}$,
+$d\lambda \propto \frac{1}{D_{\pupil} M_{\grating}}$.  
+$D_{\pupil} M_{\grating}$ is the total number of lines in the grating,
 or the total number of interfering elements; this is a common
 figure of merit for diffracting systems.
 
 \section{Scaling with telescope size}
 
-The $d\lambda \propto D_{\mathrm{tel}}/D_{\mathrm{pupil}}$ scaling means that large telescopes 
+The $d\lambda \propto D_{\tel}/D_{\pupil}$ scaling means that large telescopes 
 require 
 instruments with large pupils - and that means bigger collimators, 
 cameras, gratings, and detectors.  Note that this is true even for a
@@ -578,7 +591,7 @@ be if we sat at the small telescope and opened the slit from 1'' to 2''.
 If we just want to do imaging, we can move a reimaging camera
 from a small to large telescope, but of course its field of
 view will be proportionately smaller.  The product of 
-$D_{\mathrm{tel}}^2 * (field\ diameter)^2$ stays constant, so if we need to
+$D_{\tel}^2 * (field\ diameter)^2$ stays constant, so if we need to
 map an area larger than the field of view, the large telescope won't be
 faster - unless it has better image quality.
 
