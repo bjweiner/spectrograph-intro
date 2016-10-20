@@ -2,6 +2,7 @@
 \documentclass[12pt]{article}
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage{amsmath}
 
 \textwidth 6.5in
 \oddsidemargin 0in
@@ -15,6 +16,9 @@
 \captionsetup{width=0.85\textwidth}
 
 \long\def\hidetext#1{\relax}
+
+% In ``align'' environments, add a bit more space between lines
+\addtolength{\jot}{2pt}
 
 \begin{document}
 
@@ -158,17 +162,18 @@ is simply the ratio of height of the cone to the base.
 The plate scale at the secondary focal plane of a telescope and
 the physical diameter of the field of view depend on the
 focal length of the telescope $f_{\mathrm{tel}}$
-(the factor 206265'' converts from radians to arcseconds):
- 
-$$ s_{\mathrm{tel}} = 206265" / f_{\mathrm{tel}}, $$
-$$ f_{\mathrm{tel}} = D_{\mathrm{tel}} N_{\mathrm{tel}}, $$
-$$ D_{\mathrm{field}} = \theta_{\mathrm{field}} / s_{\mathrm{tel}}. $$
+(the factor $206265''$ converts from radians to arcseconds):
+\begin{align*}
+s_{\mathrm{tel}} &= 206265'' / f_{\mathrm{tel}}, \\
+f_{\mathrm{tel}} &= D_{\mathrm{tel}} N_{\mathrm{tel}}, \\
+D_{\mathrm{field}} &= \theta_{\mathrm{field}} / s_{\mathrm{tel}}.
+\end{align*}
 
 The scale at the secondary focal plane is usually large 
 enough that it is not a good match for modern detectors.
 For example, at the f/11 focus of the 6.5-m Magellan,
-the plate scale is 2.9''/mm.  A CCD detector with 15 $\mu$m pixels
-would have 0.043''/pixel, which grossly oversamples a
+the plate scale is $2.9''$/mm.  A CCD detector with 15 $\mu$m pixels
+would have $0.043''$/pixel, which grossly oversamples a
 reasonable atmospheric seeing ($\sim 0.6''$).
 
 \subsection{Simple reimaging systems}
@@ -340,10 +345,12 @@ An off-axis beam is reimaged at distance from the detector center of
 $$ D_{\mathrm{ccd}}/2 = \theta_{\mathrm{offaxis}} f_{\mathrm{cam}}. $$
 
 So this means that
+\begin{align*}
+D_{\mathrm{ccd}} &= D_{\mathrm{field}} \frac{f_{\mathrm{cam}}}{f_{\mathrm{coll}}}, \\
+s_{\mathrm{ccd}} &= s_{\mathrm{tel}} \frac{f_{\mathrm{coll}}}{f_{\mathrm{cam}}}, \\
+s_{\mathrm{ccd}} &= \frac{206265''}{f_{\mathrm{tel}}} \frac{f_{\mathrm{coll}}}{f_{\mathrm{cam}}}.
+\end{align*}
 
-$$ D_{\mathrm{ccd}} = D_{\mathrm{field}} \frac{f_{\mathrm{cam}}}{f_{\mathrm{coll}}}, $$
-$$ s_{\mathrm{ccd}} = s_{\mathrm{tel}} \frac{f_{\mathrm{coll}}}{f_{\mathrm{cam}}}, $$ 
-$$ s_{\mathrm{ccd}} = \frac{206265"}{f_{\mathrm{tel}}} \frac{f_{\mathrm{coll}}}{f_{\mathrm{cam}}}. $$ 
 
 The focal plane and plate scale have been demagnified by the 
 ratio of collimator to camera focal lengths.  If the collimator
@@ -488,7 +495,7 @@ $d\alpha/d\beta \sim 1$, $dW$ corresponds to a certain number
 of detector pixels as calculated earlier.
 
 $$ dr_{\mathrm{ccd}} {\rm (in\ mm)} = dW / s_{\mathrm{ccd}} , $$
-$$ dr_{\mathrm{ccd}} = \frac{dW}{206265"} f_{\mathrm{tel}} \frac{f_{\mathrm{cam}}}{f_{\mathrm{coll}}}, $$
+$$ dr_{\mathrm{ccd}} = \frac{dW}{206265''} f_{\mathrm{tel}} \frac{f_{\mathrm{cam}}}{f_{\mathrm{coll}}}, $$
 
 and we had that
 $$ d\lambda = \frac{dr_{\mathrm{ccd}}~{\rm cos}~\beta}{f_{\mathrm{cam}} M_{\mathrm{grating}}}. $$
@@ -496,11 +503,11 @@ $$ d\lambda = \frac{dr_{\mathrm{ccd}}~{\rm cos}~\beta}{f_{\mathrm{cam}} M_{\math
 Therefore the delta-wavelength $d\lambda$ for a slit width $dW$
 in arcsec is given by
 
-%$$  d\lambda = \frac{dW}{206265"} f_{\mathrm{tel}} \frac{f_{\mathrm{cam}}}{f_{\mathrm{coll}}} \frac{{\rm cos}~\beta}{f_{\mathrm{cam}}  M_{\mathrm{grating}}}, $$
+%$$  d\lambda = \frac{dW}{206265''} f_{\mathrm{tel}} \frac{f_{\mathrm{cam}}}{f_{\mathrm{coll}}} \frac{{\rm cos}~\beta}{f_{\mathrm{cam}}  M_{\mathrm{grating}}}, $$
 %
 %simplifying to
 
-$$  d\lambda = \frac{dW}{206265"} \frac{f_{\mathrm{tel}}}{f_{\mathrm{coll}}}\frac{{\rm cos}~\beta}{M_{\mathrm{grating}}}. $$
+$$  d\lambda = \frac{dW}{206265''} \frac{f_{\mathrm{tel}}}{f_{\mathrm{coll}}}\frac{{\rm cos}~\beta}{M_{\mathrm{grating}}}. $$
 
 Note that the camera focal length has dropped out here and
 that $f_{\mathrm{coll}}$ is in the denominator, meaning longer collimators
@@ -515,7 +522,7 @@ Since $f_{\mathrm{tel}} = D_{\mathrm{tel}} N_{\mathrm{tel}}$, and $f_{\mathrm{co
 we can rewrite the equation for resolution as a function of 
 slit width as
 
-$$ d\lambda = \frac{dW}{206265"}  \frac{D_{\mathrm{tel}}}{D_{\mathrm{pupil}}} \frac{{\rm cos}~\beta}{M_{\mathrm{grating}}}. $$
+$$ d\lambda = \frac{dW}{206265''}  \frac{D_{\mathrm{tel}}}{D_{\mathrm{pupil}}} \frac{{\rm cos}~\beta}{M_{\mathrm{grating}}}. $$
 
 Many factors have dropped out, leaving only telescope and
 pupil diameters and the lines/mm of the grating (and ${\rm cos}~\beta$,
