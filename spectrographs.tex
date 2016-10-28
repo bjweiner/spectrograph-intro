@@ -2,6 +2,7 @@
 \documentclass[12pt]{article}
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage{amsmath}
 
 \textwidth 6.5in
 \oddsidemargin 0in
@@ -16,6 +17,9 @@
 
 \long\def\hidetext#1{\relax}
 
+% In ``align'' environments, add a bit more space between lines
+\addtolength{\jot}{2pt}
+
 % Macros for variable subscripts, because we want to typeset them just so.
 \newcommand{\subscript}[1]{\mathrm{#1}}
 \newcommand{\field}{\subscript{field}}
@@ -27,7 +31,6 @@
 \newcommand{\cam}{\subscript{cam}}
 \newcommand{\grating}{\subscript{grating}}
 \newcommand{\order}{\subscript{order}}
-
 
 \begin{document}
 
@@ -120,8 +123,8 @@ $\theta_{\field} =$ angular field of view
 To simplify the optical analysis, I will consider optical
 elements that are focused at infinity.
 We will deal with mirrors and lenses that take
-incident collimated beams - parallel ray bundles, such as from a
-star at nearly-infinite distance - and turn them into images
+incident collimated beams---parallel ray bundles, such as from a
+star at nearly-infinite distance---and turn them into images
 at a finite distance, or vice versa, turning images into collimated 
 beams.  In the case of collimated beams, a mirror or lens turns the off-axis
 angle $\theta$ of an incident beam into an off-axis displacement $r$
@@ -171,17 +174,18 @@ is simply the ratio of height of the cone to the base.
 The plate scale at the secondary focal plane of a telescope and
 the physical diameter of the field of view depend on the
 focal length of the telescope $f_{\tel}$
-(the factor 206265'' converts from radians to arcseconds):
- 
-$$ s_{\tel} = 206265" / f_{\tel}, $$
-$$ f_{\tel} = D_{\tel} N_{\tel}, $$
-$$ D_{\field} = \theta_{\field} / s_{\tel}. $$
+(the factor $206265''$ converts from radians to arcseconds):
+\begin{align*}
+s_{\tel} &= 206265'' / f_{\tel}, \\
+f_{\tel} &= D_{\tel} N_{\tel}, \\
+D_{\field} &= \theta_{\field} / s_{\tel}.
+\end{align*}
 
 The scale at the secondary focal plane is usually large 
 enough that it is not a good match for modern detectors.
 For example, at the f/11 focus of the 6.5-m Magellan,
-the plate scale is 2.9''/mm.  A CCD detector with 15 $\mu$m pixels
-would have 0.043''/pixel, which grossly oversamples a
+the plate scale is $2.9''$/mm.  A CCD detector with 15 $\mu$m pixels
+would have $0.043''$/pixel, which grossly oversamples a
 reasonable atmospheric seeing ($\sim 0.6''$).
 
 \subsection{Simple reimaging systems}
@@ -353,14 +357,15 @@ An off-axis beam is reimaged at distance from the detector center of
 $$ D_{\ccd}/2 = \theta_{\offaxis} f_{\cam}. $$
 
 So this means that
-
-$$ D_{\ccd} = D_{\field} \frac{f_{\cam}}{f_{\coll}}, $$
-$$ s_{\ccd} = s_{\tel} \frac{f_{\coll}}{f_{\cam}}, $$ 
-$$ s_{\ccd} = \frac{206265"}{f_{\tel}} \frac{f_{\coll}}{f_{\cam}}. $$ 
+\begin{align*}
+D_{\ccd} &= D_{\field} \frac{f_{\cam}}{f_{\coll}}, \\
+s_{\ccd} &= s_{\tel} \frac{f_{\coll}}{f_{\cam}}, \\
+s_{\ccd} &= \frac{206265''}{f_{\tel}} \frac{f_{\coll}}{f_{\cam}}.
+\end{align*}
 
 The focal plane and plate scale have been demagnified by the 
 ratio of collimator to camera focal lengths.  If the collimator
-is 3x longer than the camera, the detector can be 3x smaller
+is 3 times longer than the camera, the detector can be 3 times smaller
 than the field size in the telescope focal plane.
 Large telescopes have big focal planes, while detectors are 
 usually smaller, so reimaging systems with demagnification 
@@ -374,7 +379,7 @@ Now consider putting a grating or grism in the collimated
 beam to do spectroscopy.  The important choice for spectroscopy
 is the lines/mm of the grating, call this $M_{\grating}$, which 
 governs the spectral resolution.  Typical numbers 
-for large astronomical gratings range from 100-1200 lines/mm
+for large astronomical gratings range from 100--1200 lines/mm
 (apart from echelle gratings, which are used at a different 
 rangle of incident angles and in more complex spectrographs).
 
@@ -501,7 +506,7 @@ $d\alpha/d\beta \sim 1$, $dW$ corresponds to a certain number
 of detector pixels as calculated earlier.
 
 $$ dr_{\ccd} {\rm (in\ mm)} = dW / s_{\ccd} , $$
-$$ dr_{\ccd} = \frac{dW}{206265"} f_{\tel} \frac{f_{\cam}}{f_{\coll}}, $$
+$$ dr_{\ccd} = \frac{dW}{206265''} f_{\tel} \frac{f_{\cam}}{f_{\coll}}, $$
 
 and we had that
 $$ d\lambda = \frac{dr_{\ccd}~{\rm cos}~\beta}{f_{\cam} M_{\grating}}. $$
@@ -509,11 +514,11 @@ $$ d\lambda = \frac{dr_{\ccd}~{\rm cos}~\beta}{f_{\cam} M_{\grating}}. $$
 Therefore the delta-wavelength $d\lambda$ for a slit width $dW$
 in arcsec is given by
 
-%$$  d\lambda = \frac{dW}{206265"} f_{\tel} \frac{f_{\cam}}{f_{\coll}} \frac{{\rm cos}~\beta}{f_{\cam}  M_{\grating}}, $$
+%$$  d\lambda = \frac{dW}{206265''} f_{\tel} \frac{f_{\cam}}{f_{\coll}} \frac{{\rm cos}~\beta}{f_{\cam}  M_{\grating}}, $$
 %
 %simplifying to
 
-$$  d\lambda = \frac{dW}{206265"} \frac{f_{\tel}}{f_{\coll}}\frac{{\rm cos}~\beta}{M_{\grating}}. $$
+$$  d\lambda = \frac{dW}{206265''} \frac{f_{\tel}}{f_{\coll}}\frac{{\rm cos}~\beta}{M_{\grating}}. $$
 
 Note that the camera focal length has dropped out here and
 that $f_{\coll}$ is in the denominator, meaning longer collimators
@@ -528,7 +533,7 @@ Since $f_{\tel} = D_{\tel} N_{\tel}$, and $f_{\coll} = D_{\pupil}  N_{\tel}$,
 we can rewrite the equation for resolution as a function of 
 slit width as
 
-$$ d\lambda = \frac{dW}{206265"}  \frac{D_{\tel}}{D_{\pupil}} \frac{{\rm cos}~\beta}{M_{\grating}}. $$
+$$ d\lambda = \frac{dW}{206265''}  \frac{D_{\tel}}{D_{\pupil}} \frac{{\rm cos}~\beta}{M_{\grating}}. $$
 
 Many factors have dropped out, leaving only telescope and
 pupil diameters and the lines/mm of the grating (and ${\rm cos}~\beta$,
@@ -562,7 +567,7 @@ figure of merit for diffracting systems.
 
 The $d\lambda \propto D_{\tel}/D_{\pupil}$ scaling means that large telescopes 
 require 
-instruments with large pupils - and that means bigger collimators, 
+instruments with large pupils---and that means bigger collimators,
 cameras, gratings, and detectors.  Note that this is true even for a
 single-object spectrograph where we don't need to image a large field
 of view, but want a reasonably high resolution.  
@@ -575,42 +580,43 @@ a narrower slit.  That means either suffering slit losses when the
 slit gets smaller than the seeing, or improving
 the image resolution delivered to the telescope focal plane, such as
 with adaptive optics.  This is one reason that extremely large
-telescopes will need and use adaptive optics -- to keep some of 
+telescopes will need and use adaptive optics---to keep some of 
 the {\it instruments} to a buildable size.
 
 Taking an instrument from a small telescope and putting it on
 a big telescope can be done (if the telescopes have the same 
-f-number - if the f-number is different, it will either underfill
+f-number; if the f-number is different, it will either underfill
 or overfill the pupil).  However, it is not ideal.  The larger
 telescope has a larger scale at its focal plane, so for e.g.
-a 1.0'' slit we need a physically wider slit.  With the wider
+a $1.0''$ slit we need a physically wider slit.  With the wider
 slit, the resolution is worse because we are allowing a 
 larger range of angles onto the grating, just as it would 
-be if we sat at the small telescope and opened the slit from 1'' to 2''.
+be if we sat at the small telescope and opened the slit from $1''$ to $2''$.
 
 If we just want to do imaging, we can move a reimaging camera
 from a small to large telescope, but of course its field of
 view will be proportionately smaller.  The product of 
-$D_{\tel}^2 * (field\ diameter)^2$ stays constant, so if we need to
+
+$D_{\tel}^2 * (\mathrm{field\ diameter})^2$ stays constant, so if we need to
 map an area larger than the field of view, the large telescope won't be
-faster - unless it has better image quality.
+faster---unless it has better image quality.
 
 A number of instruments have used a multi-barrel reimager
-strategy to cover larger areas.  The idea is that for a 2x larger
+strategy to cover larger areas.  The idea is that for a $2\times$ larger
 diameter
-telescope, instead of scaling up a instrument design by 2x diameter
-(8x the volume of the small instrument, 4x the number of detector
+telescope, instead of scaling up a instrument design by $2\times$ diameter
+($8\times$ the volume of the small instrument, $4\times$ the number of detector
 pixels), one builds 4 of the 
 smaller spectrographs and tiles the focal plane with them.  This 
 covers the same field as the one big spectrograph, with the same
 number of pixels, and theoretically
-requires only 4x the volume of the small instrument.  Although one 
+requires only $4\times$ the volume of the small instrument.  Although one
 has to make 4 of each optical element, the elements are all smaller, 
 so it should be cheaper and less challenging to fabricate.  But a 
 drawback is that they are each still
 using a small pupil, so the resolution of each spectrograph 
 will be limited: for a given slit and grating, the resolution will
-be 2x worse than it was on the small telescope.
+be $2\times$ worse than it was on the small telescope.
 
 % Leave out the examples for now
 
